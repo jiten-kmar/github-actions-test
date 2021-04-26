@@ -10,4 +10,9 @@ jobs:
         run: |
           node -v
           npm -v
+      - name: python shell
+        run: |
+          import os
+          print(os.environ['PATH'])
+        shell: python
       
