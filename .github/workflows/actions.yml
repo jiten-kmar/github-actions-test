@@ -11,4 +11,4 @@ jobs:
         with:
            who-to-greet: 'Jitender Kumar'
       - name: Log Time with Greeting
-        run: echo ${{steps.id.outputs.time}}
+        run: echo "${{steps.id.outputs.time}}"
