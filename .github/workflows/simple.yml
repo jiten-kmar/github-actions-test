@@ -12,9 +12,17 @@ jobs:
           npm -v
       - name: python shell
         run: |
-          import os
-          import platform
+          import os  
           print(os.environ['PATH'])
+        shell: python
+  
+  run-python-command:
+    runs-on: ubuntu-latest
+    needs: ["run-shell-command"]
+    steps:
+      - name: python depends on
+        run: |
+          import platform
           print(platform.processor())
         shell: python
-      
+        
