@@ -1,11 +1,21 @@
 name: Action Workflows 
 on: 
   #push:
-  pull_request:
-    types: [closed, reopened, assigned, opened ]
-  schedule:
-    - cron: "0/5 * * * *"
-
+  # pull_request:
+  #   types: [closed, reopened, assigned, opened ]
+  # schedule:
+  #   - cron: "0/5 * * * *"
+  ## for workflows by branch tags and paths
+  push: 
+    branches:
+      - main
+      - 'feature/*' # matches any branch that starts with feature/
+      - 'feature/**' # matches any branch that starts with feature/feature/*
+      - '!feature/**' # ignore this branch
+    # tags:
+    #   - "v1"
+    # paths:
+    #   - '/src/**'
 jobs:
   run-github-actions: 
     runs-on: ubuntu-latest
