@@ -1,4 +1,4 @@
-name: matrix
+name: node_matrix
 on: push 
 jobs:
   node-version:
