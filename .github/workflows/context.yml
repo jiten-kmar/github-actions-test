@@ -12,6 +12,8 @@ jobs:
         run: eecho "$GITHUB_CONTEXT"
       - name: Dump job context
         if: failure()
+          # you can use timeout_minutes=360
+          #  ccontinue-on-error:  true even if any steps fails
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
         run: echo "$JOB_CONTEXT"
