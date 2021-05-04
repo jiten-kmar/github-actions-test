@@ -7,7 +7,7 @@ jobs:
         os: [macos-latest,ubuntu-latest,windows-latest ] # this will run the job 3 times for each OS
         node_version: [6,8,10]  # this will run the job 3 times
         include: 
-          - os: ubuntu-lates
+          - os: ubuntu-latest
             node_version: 8
             is_ubuntu_8: true # 
         exclude:  ### exclude any configurations
