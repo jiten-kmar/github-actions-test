@@ -1,0 +1,19 @@
+name: Running matrix with multiple node versions
+on: push 
+jobs:
+  node-version:
+    strategy:
+      matrix: 
+        os: [macos-latest,ubuntu-latest,windows-latest ]
+        node_version: [6,8,10]  # this will run the job 3 times
+      fail-fast: true           # this means if any job fails, all job/steps will stop
+      #max-parallel: 0
+    runs-on: ${{ matrix.os }} 
+    steps:
+      - name: Log node version
+        run: node -v 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node_version }} 
+      - name: Log node version post checkout 
+        run: node -v 
