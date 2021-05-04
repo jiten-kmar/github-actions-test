@@ -1,14 +1,25 @@
-name: Running matrix with multiple node versions
+name: matrix
 on: push 
 jobs:
   node-version:
     strategy:
       matrix: 
-        os: [macos-latest,ubuntu-latest,windows-latest ]
+        os: [macos-latest,ubuntu-latest,windows-latest ] # this will run the job 3 times for each OS
         node_version: [6,8,10]  # this will run the job 3 times
+        include: 
+          - os: ubuntu-lates
+            node_version: 8
+            is_ubuntu_8: true # 
+        exclude:  ### exclude any configurations
+          - os: windows-latest
+            node_version: 6
+          - os: windows-latest
+            node_version: 7
       fail-fast: true           # this means if any job fails, all job/steps will stop
       #max-parallel: 0
     runs-on: ${{ matrix.os }} 
+    env:
+      IS_UBUNTU_8: ${{matrix.is_ubuntu_8}} 
     steps:
       - name: Log node version
         run: node -v 
@@ -17,3 +28,5 @@ jobs:
           node-version: ${{ matrix.node_version }} 
       - name: Log node version post checkout 
         run: node -v 
+      - name: Log is ubuntu_version
+        run: $IS_UBUNTU_8
