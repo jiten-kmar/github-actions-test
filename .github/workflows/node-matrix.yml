@@ -27,6 +27,6 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }} 
       - name: Log node version post checkout 
-        run: node -v 
-      - name: Log is ubuntu_version
-        run: $IS_UBUNTU_8
+        run: |
+          node -v 
+          $IS_UBUNTU_8
